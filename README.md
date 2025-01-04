@@ -156,7 +156,6 @@ Status: active
  server {
     listen 80;
     server_name event.codewithsaroj.online www.event.codewithsaroj.online;
-
     location / {
         root /var/www/event_project/event-crm-frontend/dist;
         try_files $uri /index.html;
@@ -176,7 +175,6 @@ Status: active
 server {
     listen 80;
     server_name api.codewithsaroj.online;
-
     location / {
         proxy_pass http://localhost:7000;
         proxy_set_header Host $host;
