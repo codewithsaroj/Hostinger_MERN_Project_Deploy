@@ -18,7 +18,6 @@ Step 1 : Setup Node Js on VPS
         > curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
                 or 
         > wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-  
 
     4) Install node 
         > nvm install <node-version>
@@ -150,26 +149,30 @@ Status: active
     > root@srv684955:/var/www/event_project/event-crm-frontend#  sudo ufw allow 'Nginx Full'
 
     > root@srv684955:/var/www/event_project/event-crm-frontend# sudo ufw status
-        Status: active
-    > nano /etc/nginx/sites-available/event.codewithsaroj.online.conf
+        Status: active 
+
+Front end server configuration
+===============================
+   > nano /etc/nginx/sites-available/event.codewithsaroj.online.conf
 
  server {
     listen 80;
     server_name event.codewithsaroj.online www.event.codewithsaroj.online;
+
     location / {
         root /var/www/event_project/event-crm-frontend/dist;
         try_files $uri /index.html;
     }
 }
-
-
-    > ln -s /etc/nginx/sites-available/event.codewithsaroj.online.conf /etc/nginx/sites-enabled/
+> ln -s /etc/nginx/sites-available/event.codewithsaroj.online.conf /etc/nginx/sites-enabled/
 
 # Test the Nginx configuration for syntax errors.
 
     > nginx -t
     > systemctl restart nginx
 
+Backend server configuration
+===============================
     > nano /etc/nginx/sites-available/api.codewithsaroj.online.conf
 
 server {
@@ -190,19 +193,16 @@ server {
 
     # Connect Domain Name with Website
     # Point all your domain & sub-domain on VPS IP address by adding DNS records in your domain manager
-
     # Now your website will be live on domain name
 
-    # Setting Up SSL Certificates Install Certbot
+ Setting Up SSL Certificates Install Certbot
+ ============================================
 
     > sudo apt install -y certbot python3-certbot-nginx
     # Obtain SSL Certificates
 
     > certbot --nginx -d event.codewithsaroj.online -d  www.event.codewithsaroj.online -d api.codewithsaroj.online
     # Verify Auto-Renewal
-
+    
     > certbot renew --dry-run
-
-
-
 
