@@ -246,7 +246,7 @@ Step 3: Verify Nginx is Completely Removed
     # Verify that Nginx is no longer installed
     > nginx -v
 
-To delete the old certificate and create a new one using Certbot
+To delete the old ssl certificate and create a new one using Certbot
 ==================================================================
 Step 1: Delete the Existing Certificate
     List the certificates managed by Certbot:
