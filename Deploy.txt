@@ -211,3 +211,61 @@ server {
 
 
 
+uninstall Nginx completely, remove its configuration files, and reinstall it from scratch
+============================================================================================
+Step 1: Uninstall Nginx
+
+    # Stop Nginx service
+    > sudo systemctl stop nginx
+    
+    # Disable the Nginx service from starting on boot
+    > sudo systemctl disable nginx
+    
+    # Uninstall Nginx and remove configuration files
+    > sudo apt-get purge nginx nginx-common nginx-full
+    
+    # Optionally, remove the Nginx dependencies that are no longer required
+    > sudo apt-get autoremove
+    
+    # Clear the apt cache to free up space
+    > sudo apt-get clean
+Step 2: Remove Nginx Configuration Files
+    # Remove Nginx configuration files
+    > sudo rm -rf /etc/nginx/
+    
+    # If you want to remove the log files as well
+    > sudo rm -rf /var/log/nginx/
+    
+    # If you want to clear out the cached files
+    > sudo rm -rf /var/cache/nginx/
+    
+    # Optionally, remove any related directories in /usr/share/ and /usr/local/ if they exist
+    > sudo rm -rf /usr/share/nginx/
+    > sudo rm -rf /usr/local/nginx/
+Step 3: Verify Nginx is Completely Removed
+    # Verify that Nginx is no longer installed
+    > nginx -v
+
+To delete the old certificate and create a new one using Certbot
+==================================================================
+Step 1: Delete the Existing Certificate
+    List the certificates managed by Certbot:
+        > sudo certbot certificates
+    Revoke and delete the certificate
+        > sudo certbot delete --cert-name api.codewithsaroj.online
+        > sudo certbot delete --cert-name event.codewithsaroj.online
+Step 2: Obtain a New Certificate
+    Generate a new certificate for both domains (event.codewithsaroj.online and api.codewithsaroj.online) 
+        > sudo certbot --nginx -d event.codewithsaroj.online -d api.codewithsaroj.online
+Step 3: Verify the SSL Certificate
+    Check if the SSL certificate is successfully applied:
+    visit https://event.codewithsaroj.online and https://api.codewithsaroj.online in your browser.
+    Test SSL Configuration:
+        > sudo nginx -t
+        > sudo systemctl reload nginx
+
+
+
+
+
+
