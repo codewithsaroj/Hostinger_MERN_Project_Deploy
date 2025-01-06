@@ -153,8 +153,23 @@ Status: active
 
 Front end server configuration
 ===============================
-   > nano /etc/nginx/sites-available/event.codewithsaroj.online.conf
+   > nano /etc/nginx/sites-available/sutraa.info.conf
 
+server {
+    listen 80;
+    server_name sutraa.info;
+
+    root /var/www/sutraa_events/event-crm-frontend;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+==
+or
+===
+> nano /etc/nginx/sites-available/event.codewithsaroj.online.conf
  server {
     listen 80;
     server_name event.codewithsaroj.online www.event.codewithsaroj.online;
