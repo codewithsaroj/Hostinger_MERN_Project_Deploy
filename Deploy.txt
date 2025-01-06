@@ -115,10 +115,9 @@ Step 3 : Setup Git on VPS
 
     11) >root@srv684955:/var/www/event_project/event-crm-backend#  npm install -g pm2
     12) >root@srv684955:/var/www/event_project/event-crm-backend# npm run start
-    13) >root@srv684955:/var/www/event_project/event-crm-backend#  pm2 start app.js --name event_backend
-    14) >root@srv684955:/var/www/event_project/event-crm-backend#  pm2 start src/app.js --name event_backend
-    15) >root@srv684955:/var/www/event_project/event-crm-backend# pm2 startup
-    16) root@srv684955:/var/www/event_project/event-crm-backend# pm2 save
+    13) >root@srv684955:/var/www/event_project/event-crm-backend#  pm2 start src/app.js --name event_backend
+    14) >root@srv684955:/var/www/event_project/event-crm-backend# pm2 startup
+    15) root@srv684955:/var/www/event_project/event-crm-backend# pm2 save
     > root@srv684955:/var/www/event_project/event-crm-backend#  sudo ufw status
     Status: inactive
 >root@srv684955:/var/www/event_project/event-crm-backend#  sudo ufw enable
